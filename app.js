@@ -1,6 +1,14 @@
-const http = require('http');
-const routes=require('./routes')
+const express=require('express')
+const app=express();
 
-const server = http.createServer(routes);
+app.use((eq,res,next)=>{
+    console.log("i am in middle ware 1")
+    next()
+})
 
-server.listen(3000);
+app.use((req,res,next)=>{
+    console.log("i am in middle ware 2")
+    res.send('<h1>I am Bhanu!</h1>')
+})
+
+app.listen(3000);
